@@ -1,0 +1,167 @@
+.nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    transition: all 0.5s ease-out;
+    z-index: 1;
+    .logo {
+        color: $color-primary;
+        font-size: 20px;
+        font-weight: 400;
+        display: inline-block;
+    }
+    &__links {
+        display: flex;
+        @media screen and (max-width : $md){
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $color-primary;
+            height: 100vh;
+            width: 320px;
+            transform: translateX(100%);
+            flex-direction: column;
+            align-items: center;
+            padding-top: 75px;
+            transition: all 0.5s ease-out;
+        }
+    }
+    &__items {
+        margin: 0 25px;
+        &:last-child{
+            margin-right: 0;
+        }
+        &.active{
+            a{
+                color: $color-red;
+            }
+        }
+        a{
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            color: $color-grey-darker;
+            &:hover{
+                color: $color-red;
+            }
+        }
+        @media screen and (max-width : $md){
+            a{
+                color: $color-primary;
+                &:hover{
+                    color: $color-primary;
+                }
+            }
+            &.active{
+                a{
+                    color: $color-primary;
+                }
+            }
+            margin: 20px 22px;
+        }
+    }
+    .burger{
+        display: none;
+        @media screen and (max-width : $md){
+            display: block;    
+            cursor: pointer;
+            caret-color: transparent;
+            .line1{
+                display: block;
+                transition: all 0.5s ease-out;
+            }        
+            .line2{
+                transform: rotate(0deg);
+                transition: all 0.5s ease-out;
+            }
+            .line3{
+                transform: rotate(0deg);
+                transition: all 0.5s ease-out;
+            }
+        }
+    }
+    &.add-bg{
+        background-color: $color-primary;
+        .logo{
+            color: $color-white;
+        }
+        .nav-bar__items{
+            a{
+                color: $color-white;
+                &:hover{
+                    color: $color-red;
+                }
+            }
+            &.active{
+                a{
+                    color: $color-red;
+                }
+            }
+        }
+        @media screen and (max-width : $md){
+            [class*="line"]{
+                background-color: $color-white;
+            }
+            .nav-bar__items{
+                &.active{
+                    a{
+                        color: $color-primary;
+                    }
+                }
+                a{
+                    &:hover{
+                        color: $color-primary;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width : $md){
+        &.show-on-mobile{
+            .nav-bar__links{
+                transform: translate(0);
+                .nav-bar__items{
+                    &.active{
+                        a{
+                            color: $color-red;
+                        }
+                    }
+                    a{
+                        color: $color-white;
+                        &:hover{
+                            color: $color-red;       
+                        }
+                    }
+                }
+            }
+            .burger{    
+                .line1{
+                    visibility: hidden;
+                    transition: all 0.5s ease-out;
+                }
+                .line2{
+                    transform: rotate(45deg);
+                    transition: all 0.5s ease-out;
+                }
+                .line3{
+                    transform: rotate(315deg) translate(5px,-6px);
+                    transition: all 0.5s ease-out;
+                }
+            }
+            [class*="line"]{
+                background-color: $color-white;
+            }
+        }
+        [class*="line"]{
+            width: 25px;
+            height: 3px;
+            background-color: $color-primary;
+            margin: 5px;
+        }
+    }
+}
